@@ -1,0 +1,12 @@
+<svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Botanical leaf accent matching design reference -->
+  <path d="M10 90C10 50 30 20 60 10C30 20 10 130 10 170C10 175 12 180 15 180C20 180 25 175 30 165C40 145 50 110 60 90C50 110 30 130 10 90Z"
+        fill="#C4D0C0"
+        fill-opacity="0.6"/>
+  <path d="M60 10C60 10 70 30 75 50C80 70 85 90 85 110C85 120 83 130 80 138C78 144 75 150 72 155"
+        stroke="#8B6F4F"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        fill="none"
+        opacity="0.4"/>
+</svg>

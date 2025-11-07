@@ -1,59 +1,98 @@
 @import "tailwindcss";
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/*
+============================================
+ROOTED WELLNESS APP - DESIGN SYSTEM
+Pixel-perfect replication of design reference
+============================================
+
+EXTRACTED COLOR PALETTE:
+- Sage Green (Hero): #C4D0C0 / hsl(110, 18%, 80%)
+- Warm Brown (Footer): #8B6F4F / hsl(28, 30%, 43%)
+- Terracotta (CTA): #B87454 / hsl(20, 42%, 52%)
+- Cream (Background): #F5F3F0 / hsl(30, 20%, 95%)
+- Pearl White (Cards): #FFFFFF / hsl(0, 0%, 100%)
+- Dark Brown (Text): #6B5744 / hsl(28, 22%, 35%)
+
+TYPOGRAPHY:
+- Headings: Lora (serif, elegant)
+- Body: Inter (clean sans-serif)
+
+SPACING SYSTEM:
+- Section padding: 80px vertical
+- Card padding: 32px
+- Element gaps: 16px, 24px, 32px
+
+VISUAL EFFECTS:
+- Card shadows: 0 4px 12px rgba(0,0,0,0.08)
+- Button radius: 24px (pill shape)
+- Card radius: 16px
+============================================
 */
 
+/* Import Google Fonts - EXACT matches from design reference */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  /* Pure white background with crisp black text */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  /* Rooted Wellness Color System - Extracted from design reference */
 
-  /* Clean white cards with black text */
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  /* Primary: Sage Green (hero backgrounds, accents) */
+  --background: 30 20% 95%;  /* Cream background */
+  --foreground: 28 22% 35%;  /* Dark brown text */
 
-  /* Popovers with white background */
+  /* Cards: Pure white with soft shadows */
+  --card: 0 0% 100%;  /* Pearl white */
+  --card-foreground: 28 22% 35%;  /* Dark brown text */
+
+  /* Popovers */
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  --popover-foreground: 28 22% 35%;
 
-  /* Primary: Black with white text */
-  --primary: 0 0% 0%;
-  --primary-foreground: 0 0% 100%;
+  /* Primary: Terracotta for CTAs and important actions */
+  --primary: 20 42% 52%;  /* Terracotta #B87454 */
+  --primary-foreground: 0 0% 100%;  /* White text on terracotta */
 
-  /* Secondary: Light gray background with black text */
-  --secondary: 0 0% 97%;
-  --secondary-foreground: 0 0% 0%;
+  /* Secondary: Sage green for sections */
+  --secondary: 110 18% 80%;  /* Sage green #C4D0C0 */
+  --secondary-foreground: 28 22% 35%;  /* Dark brown text */
 
-  /* Muted: Subtle gray with darker text */
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  /* Muted: Warm brown tones */
+  --muted: 28 30% 90%;  /* Light warm brown */
+  --muted-foreground: 28 22% 45%;  /* Medium brown */
 
-  /* Accent: Light gray */
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  /* Accent: Warm brown for footer and accents */
+  --accent: 28 30% 43%;  /* Warm brown #8B6F4F */
+  --accent-foreground: 0 0% 100%;  /* White text */
 
-  /* Destructive: Clean red */
+  /* Destructive: Soft red */
   --destructive: 0 70% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Borders: Subtle gray */
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 0%;
+  /* Borders: Subtle warm tones */
+  --border: 30 15% 85%;  /* Warm light border */
+  --input: 30 15% 92%;  /* Light input background */
+  --ring: 20 42% 52%;  /* Terracotta ring */
 
-  /* Minimal rounded corners */
-  --radius: 0.375rem;
+  /* Border radius matching design */
+  --radius: 1rem;  /* 16px for cards */
+  --radius-pill: 1.5rem;  /* 24px for buttons */
 
-  /* Sidebar: Clean white with black text */
+  /* Sidebar */
   --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
+  --sidebar-foreground: 28 22% 35%;
+  --sidebar-primary: 20 42% 52%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
+  --sidebar-accent: 110 18% 80%;
+  --sidebar-accent-foreground: 28 22% 35%;
+  --sidebar-border: 30 15% 85%;
+  --sidebar-ring: 20 42% 52%;
+
+  /* Rooted-specific colors for easy reference */
+  --rooted-sage: 110 18% 80%;
+  --rooted-terracotta: 20 42% 52%;
+  --rooted-brown: 28 30% 43%;
+  --rooted-cream: 30 20% 95%;
+  --rooted-text: 28 22% 35%;
 }
 
 .dark {
@@ -164,40 +203,253 @@ All colors MUST be HSL.
   }
 }
 
+/* ============================================
+   GLOBAL RESETS & BASE STYLES
+   ============================================ */
+
 * {
   border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 
-/* Minimal, clean typography */
+/* ============================================
+   TYPOGRAPHY SYSTEM - Rooted Design
+   ============================================ */
+
+/* Headings use Lora serif font for elegance */
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: hsl(var(--foreground));
+  color: hsl(var(--rooted-text));
+  line-height: 1.2;
+  margin-top: 0;
 }
 
-/* Clean button styles */
+h1 {
+  font-size: 3rem;  /* 48px */
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;  /* 32px */
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;  /* 24px */
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;  /* 20px */
+  margin-bottom: 0.875rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.125rem;  /* 18px */
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1rem;  /* 16px */
+  margin-bottom: 0.625rem;
+  font-weight: 600;
+}
+
+/* Body text elements */
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+a {
+  color: hsl(var(--rooted-terracotta));
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: hsl(var(--rooted-brown));
+  text-decoration: underline;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* ============================================
+   BUTTON STYLES - Rooted Design
+   ============================================ */
+
 button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary button - Terracotta pill */
+.btn-primary {
+  background-color: hsl(var(--rooted-terracotta));
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(184, 116, 84, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: hsl(var(--rooted-brown));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(184, 116, 84, 0.3);
+}
+
+/* Secondary button - Sage green */
+.btn-secondary {
+  background-color: hsl(var(--rooted-sage));
+  color: hsl(var(--rooted-text));
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
   font-weight: 500;
 }
 
-/* Subtle shadows for depth */
+.btn-secondary:hover {
+  background-color: hsl(110, 18%, 75%);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   FORM ELEMENTS - Rooted Design
+   ============================================ */
+
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  background-color: hsl(var(--input));
+  color: hsl(var(--foreground));
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: hsl(var(--rooted-terracotta));
+  box-shadow: 0 0 0 3px rgba(184, 116, 84, 0.1);
+}
+
+label {
+  font-weight: 500;
+  color: hsl(var(--rooted-text));
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ============================================
+   CARD STYLES - Rooted Design
+   ============================================ */
+
+.card {
+  background-color: hsl(var(--card));
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+   SHADOW UTILITIES - Rooted Design
+   ============================================ */
+
 .shadow-sm {
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .shadow-md {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-lg {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.section-padding {
+  padding: 5rem 2rem;  /* 80px vertical, responsive horizontal */
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;  /* 32px on mobile */
+  }
+
+  h2 {
+    font-size: 1.5rem;  /* 24px on mobile */
+  }
+
+  .section-padding {
+    padding: 3rem 1rem;  /* Reduced padding on mobile */
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
 }
